@@ -49,7 +49,6 @@ namespace BulkyWeb.Controllers
             }
 
             Category? categoryFromDb = _db.Categories.Find(id);
-
             if (categoryFromDb == null)
             {
                 return NotFound();
@@ -78,7 +77,6 @@ namespace BulkyWeb.Controllers
             }
 
             Category? categoryFromDb = _db.Categories.Find(id);
-
             if (categoryFromDb == null)
             {
                 return NotFound();
