@@ -20,12 +20,6 @@ namespace BulkyWeb.Areas.Admin.Controllers
         {
             List<Category> objCategoryList = _unitOfWork.Category.GetAll().ToList();
 
-            IEnumerable<SelectListItem> CategoryList = _unitOfWork.Category.GetAll().Select(u => new SelectListItem
-            {
-                Text = u.Name,
-                Value = u.Id.ToString()
-            });
-
             return View(objCategoryList);
         }
 
