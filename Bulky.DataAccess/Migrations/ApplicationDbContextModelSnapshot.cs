@@ -211,7 +211,7 @@ namespace Bulky.DataAccess.Migrations
                     b.Property<DateTime>("ShippingDate")
                         .HasColumnType("datetime2");
 
-                    b.Property<string>("Station")
+                    b.Property<string>("State")
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
