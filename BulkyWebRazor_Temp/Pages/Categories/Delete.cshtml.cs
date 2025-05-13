@@ -9,14 +9,12 @@ namespace BulkyWebRazor_Temp.Pages.Categories
     public class DeleteModel : PageModel
     {
         private readonly ApplicationDbContext _db;
-        public Category? Category { get; set; }
 
+        public Category Category { get; set; }
         public DeleteModel(ApplicationDbContext db)
         {
             _db = db;
         }
-
-
         public void OnGet(int? id)
         {
             if (id != null && id != 0)
@@ -32,7 +30,6 @@ namespace BulkyWebRazor_Temp.Pages.Categories
             {
                 return NotFound();
             }
-
             _db.Categories.Remove(obj);
             _db.SaveChanges();
             TempData["success"] = "Category deleted successfully";

@@ -1,4 +1,4 @@
-﻿﻿@{
+﻿@{
     var status = Context.Request.Query["status"];
     var pending = "text-primary";
     var inprocess = "text-primary";
@@ -6,8 +6,7 @@
     var approved = "text-primary";
     var all = "text-primary";
 
-    switch (status)
-    {
+    switch (status) {
         case "pending":
             pending = "active text-white bg-primary";
             break;
@@ -28,8 +27,8 @@
 
 }
 
-<div class="card shadow border-0 mt-4">
 
+<div class="card shadow border-0 my-4">
     <div class="card-header bg-secondary bg-gradient ml-0 py-3">
         <div class="row">
             <div class="col-12 text-center">
@@ -37,13 +36,12 @@
             </div>
         </div>
     </div>
-
-    <div class="card-body p-4 mb-5">
+    <div class="card-body p-4">
         <div class="d-flex justify-content-between pb-5 pt-2">
             <span></span>
             <ul class="list-group list-group-horizontal-sm">
                 <a style="text-decoration:none;" asp-controller="Order" asp-action="Index" asp-route-status="inprocess">
-                <li class="list-group-item @inprocess">In Process</li>
+                    <li class="list-group-item @inprocess">In Process</li>
                 </a>
                 <a style="text-decoration:none;" asp-controller="Order" asp-action="Index" asp-route-status="pending">
                 <li class="list-group-item @pending">Payment Pending</li>
@@ -59,8 +57,7 @@
                 </a>
             </ul>
         </div>
-
-        <table id="tblData" class="table table-bordered table-striped" style="width:100%;">
+        <table id="tblData" class="table table-bordered table-striped" style="width:100%">
             <thead>
                 <tr>
                     <th>ID</th>
@@ -73,10 +70,10 @@
                 </tr>
             </thead>
         </table>
-    </div>
 
+    </div>
 </div>
 
-@section Scripts {
+@section Scripts{
     <script src="~/js/order.js"></script>
 }

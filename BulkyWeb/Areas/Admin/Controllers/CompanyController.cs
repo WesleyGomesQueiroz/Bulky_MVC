@@ -1,33 +1,35 @@
-﻿using Bulky.DataAccess.Data;
-using Bulky.DataAccess.Repository.IRepository;
-using Bulky.Models;
-using Bulky.Models.ViewModels;
-using Bulky.Utility;
+﻿using BulkyBook.DataAccess.Repository.IRepository;
+using BulkyBook.DataAcess.Data;
+using BulkyBook.Models;
+using BulkyBook.Models.ViewModels;
+using BulkyBook.Utility;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Rendering;
+using System.Collections.Generic;
+using System.Data;
 
-namespace BulkyWeb.Areas.Admin.Controllers
+namespace BulkyBookWeb.Areas.Admin.Controllers
 {
     [Area("Admin")]
     [Authorize(Roles = SD.Role_Admin)]
     public class CompanyController : Controller
     {
         private readonly IUnitOfWork _unitOfWork;
-
         public CompanyController(IUnitOfWork unitOfWork)
         {
             _unitOfWork = unitOfWork;
         }
-
-        public IActionResult Index()
+        public IActionResult Index() 
         {
             List<Company> objCompanyList = _unitOfWork.Company.GetAll().ToList();
+           
             return View(objCompanyList);
         }
 
         public IActionResult Upsert(int? id)
         {
+           
             if (id == null || id == 0)
             {
                 //create
@@ -36,44 +38,47 @@ namespace BulkyWeb.Areas.Admin.Controllers
             else
             {
                 //update
-                Company companyObj = _unitOfWork.Company.Get(u => u.Id == id);
+                Company companyObj = _unitOfWork.Company.Get(u=>u.Id==id);
                 return View(companyObj);
             }
+            
         }
-
         [HttpPost]
-        public IActionResult Upsert(Company companyObj)
+        public IActionResult Upsert(Company CompanyObj)
         {
             if (ModelState.IsValid)
             {
-                if (companyObj.Id == 0)
+                
+                if (CompanyObj.Id == 0)
                 {
-                    _unitOfWork.Company.Add(companyObj);
+                    _unitOfWork.Company.Add(CompanyObj);
                 }
                 else
                 {
-                    _unitOfWork.Company.Update(companyObj);
+                    _unitOfWork.Company.Update(CompanyObj);
                 }
-
+                
                 _unitOfWork.Save();
                 TempData["success"] = "Company created successfully";
                 return RedirectToAction("Index");
             }
             else
             {
-                return View(companyObj);
+                
+                return View(CompanyObj);
             }
         }
+
 
         #region API CALLS
 
         [HttpGet]
-
         public IActionResult GetAll()
         {
             List<Company> objCompanyList = _unitOfWork.Company.GetAll().ToList();
             return Json(new { data = objCompanyList });
         }
+
 
         [HttpDelete]
         public IActionResult Delete(int? id)
@@ -91,6 +96,5 @@ namespace BulkyWeb.Areas.Admin.Controllers
         }
 
         #endregion
-
     }
 }

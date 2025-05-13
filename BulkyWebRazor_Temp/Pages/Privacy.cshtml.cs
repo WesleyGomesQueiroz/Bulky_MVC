@@ -16,5 +16,4 @@ namespace BulkyWebRazor_Temp.Pages
         {
         }
     }
-
 }

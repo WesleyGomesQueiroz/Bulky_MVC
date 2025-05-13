@@ -7,10 +7,10 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Bulky.Models
-{
-    public class OrderHeader
-    {
+namespace BulkyBook.Models {
+    public class OrderHeader {
+
+
         public int Id { get; set; }
         public string ApplicationUserId { get; set; }
         [ForeignKey("ApplicationUserId")]
@@ -44,5 +44,7 @@ namespace Bulky.Models
         public string PostalCode { get; set; }
         [Required]
         public string Name { get; set; }
+
+
     }
 }

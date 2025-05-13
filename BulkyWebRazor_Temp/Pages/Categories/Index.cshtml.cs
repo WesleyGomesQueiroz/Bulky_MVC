@@ -9,7 +9,6 @@ namespace BulkyWebRazor_Temp.Pages.Categories
     {
         private readonly ApplicationDbContext _db;
         public List<Category> CategoryList { get; set; }
-
         public IndexModel(ApplicationDbContext db)
         {
             _db = db;

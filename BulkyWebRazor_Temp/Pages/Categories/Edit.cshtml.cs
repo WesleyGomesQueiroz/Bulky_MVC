@@ -9,16 +9,15 @@ namespace BulkyWebRazor_Temp.Pages.Categories
     public class EditModel : PageModel
     {
         private readonly ApplicationDbContext _db;
-        public Category? Category { get; set; }
 
+        public Category Category { get; set; }
         public EditModel(ApplicationDbContext db)
         {
             _db = db;
         }
-
         public void OnGet(int? id)
         {
-            if (id != null && id != 0)
+            if(id !=null && id != 0)
             {
                 Category = _db.Categories.Find(id);
             }

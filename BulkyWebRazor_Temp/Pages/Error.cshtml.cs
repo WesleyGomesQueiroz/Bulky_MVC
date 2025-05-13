@@ -24,5 +24,4 @@ namespace BulkyWebRazor_Temp.Pages
             RequestId = Activity.Current?.Id ?? HttpContext.TraceIdentifier;
         }
     }
-
 }

@@ -7,10 +7,8 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Bulky.Models
-{
-    public class ShoppingCart
-    {
+namespace BulkyBook.Models {
+    public class ShoppingCart {
         public int Id { get; set; }
 
         public int ProductId { get; set; }
@@ -25,7 +23,7 @@ namespace Bulky.Models
         [ValidateNever]
         public ApplicationUser ApplicationUser { get; set; }
 
-        [NotMapped]
-        public double Price { get; set; }
-    }
+		[NotMapped]
+		public double Price { get; set; }
+	}
 }
